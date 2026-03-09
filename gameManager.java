@@ -9,7 +9,7 @@ public class GameManager {
     private List<PlayerObject> players;
     
     public void start(){
-        gameSetup = new GameSetUp();
+        GameSetUp gameSetup = new GameSetUp();
         
     }
     public void playRound(){
