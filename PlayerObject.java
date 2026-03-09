@@ -1,4 +1,4 @@
-public class PlayerObject implements PlayerObjectTemplate {
+public class PlayerObject {
     private String name;
     private PlayerLogic playerLogic;
     private String currentChoice;
