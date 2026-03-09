@@ -15,7 +15,7 @@ public class GameManager {
     public void playRound(){
 
     }
-    public boolean  isMatchOver(){
-        return false;
+    public boolean isMatchOver(){
+        return totalRounds == currentRounds;
     }
 }
