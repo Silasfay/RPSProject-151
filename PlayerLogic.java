@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 public class PlayerLogic {
     public void getChoice(PlayerObject player) {
         System.out.println("Make your choice: ");
@@ -11,4 +12,8 @@ public class PlayerLogic {
             
         }
     }
+=======
+public interface PlayerLogic {
+    String getChoice();
+>>>>>>> Stashed changes
 }
