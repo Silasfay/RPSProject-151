@@ -3,6 +3,11 @@ public class GameResult {
     private int player1Wins; 
     private int player2Wins;
 
+    public GameResult(){
+        player1Wins = 0;
+        player2Wins = 0;
+    }
+
     public void displayWinner() {
         if (player1Wins > player2Wins) {
             System.out.println("Player 1 won the game!");
