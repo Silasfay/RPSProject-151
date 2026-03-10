@@ -7,7 +7,14 @@ public class GameResult {
         player1Wins = 0;
         player2Wins = 0;
     }
-
+    //getters
+    public int getPlayer1Wins() {
+        return player1Wins;
+    }
+    public int getPlayer2Wins() {
+        return player2Wins;
+    }
+    
     public void displayWinner() {
         if (player1Wins > player2Wins) {
             System.out.println("Player 1 won the game!");
