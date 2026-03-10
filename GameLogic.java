@@ -4,11 +4,11 @@ public class GameLogic {
     int count = 0;
     while(count <= 20){
         System.out.println("Make your choice: ");
-        System.out.pruntln("_______________")
-        System.out.pruntln("1) Rock");
-        System.out.pruntln("2) Paper");
-        System.out.pruntln("3) Scissors")
-        System.out.pruntln("_______________")
+        System.out.println("_______________")
+        System.out.println("1) Rock");
+        System.out.println("2) Paper");
+        System.out.println("3) Scissors")
+        System.out.println("_______________")
         int selection = scnr.nextInt();
         count++;
         //insert call for computer/player 2 choice
