@@ -3,15 +3,21 @@ public class PlayerObject {
     private PlayerLogic playerLogic;
     private String currentChoice;
 
-    public PlayerObject(){
-        playerLogic = new PlayerLogic();
+    public PlayerObject(String name, PlayerLogic playerLogic){
+        this.name = name;
+        this.playerLogic = playerLogic;
     }
-    
-    public String makeSelection() {
-        playerLogic.getChoice(this);
+
+    public String makeSelection(){
+        currentChoice = playerLogic.getChoice();
         return currentChoice;
     }
+
+    public String getCurrentChoice(){
+        return currentChoice;
+    }
+
     public String getName(){
-        return this.name;
+        return name;
     }
 }
