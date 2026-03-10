@@ -25,7 +25,7 @@ public class GameResult {
         }
     }
 
-    public void updateScore(String player1Choice, String player2Choice, PlayerChoices playerChoices) {
+    public String updateScore(String player1Choice, String player2Choice, PlayerChoices playerChoices) {
         if (player1Choice.equals(player2Choice)) {
             return "Tie!";
         }
