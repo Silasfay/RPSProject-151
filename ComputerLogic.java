@@ -9,10 +9,10 @@ public class ComputerLogic implements PlayerLogic {
 
     public ComputerLogic(HashMap<String, String[]> choices){
         this.ran = new Random();
-        this.choice =choices;
+        this.choice = choices;
     }
     @Override
-    public String getString(){
+    public String getChoice(){
         List<String> keys = new ArrayList<>(choice.keySet());
         return keys.get(ran.nextInt(keys.size()));
     }
