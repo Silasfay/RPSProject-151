@@ -1,4 +1,5 @@
-import java
+import java.util.ArrayList;
+import java.util.Scanner;
 public class GameSetUp {
     private Scanner scr;
     PlayerFactory factory;
@@ -9,15 +10,18 @@ public class GameSetUp {
     }
 
     public int setPlayerCount(){
-        return 1;
+        System.out.println("Enter Player Count: ");
+        return scr.nextInt();
     }
-    public setPlayerType(){
-
+    public int getGameType(){
+        System.out.println("What type of game: ");
+        return scr.nextInt();
     }
-    public getGameType(){
-
-    }
-    public List buildPlayers(){
-
+    public ArrayList buildPlayers(int num){
+        ArrayList<PlayerObject> playerList = new ArrayList();
+        for(int i = 0; i < num; i ++){
+            factory.buildPlayers(scr);
+        }
+        return playerList;
     }
 }
