@@ -2,29 +2,14 @@ import java.util.Scanner;
 
 public class PlayerFactory {
     private Scanner scr;
+    private PlayerChoices choices;
 
-    public enum PlayerType {
-        HUMAN, COMPUTER
-    }
-
-    public PlayerFactory(Scanner scan){
+    public PlayerFactory(Scanner scan, PlayerChoices choices){
         this.scr = scan;
+        this.choices = choices;
     }
 
-    public PlayerObject createPlayer(String name, PlayerType type){
-        PlayerLogic logic;
-
-        switch(type){
-            case HUMAN:
-                logic = new HumanLogic(scr);
-                break;
-            case COMPUTER:
-                logic = new ComputerLogic();
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown player type: " + type);
-        }
-
+    public PlayerObject createPlayer(String name, PlayerLogic logic){
         return new PlayerObject(name, logic);
     }
 }

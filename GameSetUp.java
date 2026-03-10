@@ -1,38 +1,35 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class GameSetUp {
     private Scanner scr;
-    PlayerFactory factory;
-    
+    private PlayerFactory factory;
+    private PlayerChoices choices;  
 
-    public GameSetUp(Scanner scan){
+    public GameSetUp(Scanner scan, PlayerChoices choices){
         this.scr = scan;
-        factory = new PlayerFactory();
+        this.choices = choices;
+        this.factory = new PlayerFactory(scr, choices);
     }
-    /* 
-    public int setPlayerCount(){
-        System.out.println("Enter Player Count: ");
-        return scr.nextInt();
-    }
-    public int getGameType(){
-        System.out.println("What Type of Game: ");
-        return scr.nextInt();
-    }
-    */
+
     public String setPlayerName(){
-        System.err.println("Enter Player Name:");
+        System.out.println("Enter Player Name:");
         return scr.nextLine();
     }
 
-    public String setPlayerType(){
-
-        System.out.println("Enter Player Type: ");
-        return scr.nextLine().trim();
+    private PlayerLogic setPlayerType(String name){
+        System.out.print("Is " + name + " Human or Computer? (H/C): ");
+        String input = scr.nextLine().trim().toUpperCase();
+        if(input.equals("H")) return new HumanLogic(scr);
+        return new ComputerLogic(choices.getChoices());
     }
-    public ArrayList buildPlayers(int num){
-        ArrayList<PlayerObject> playerList = new ArrayList();
-        for(int i = 0; i < num; i ++){
-            factory.createPlayer(setPlayerName(), setPlayerType());
+
+    public ArrayList<PlayerObject> buildPlayers(){ 
+        ArrayList<PlayerObject> playerList = new ArrayList<>();
+        for(int i = 0; i < 2; i++){
+            String name = setPlayerName();
+            PlayerLogic logic = setPlayerType(name); 
+            playerList.add(factory.createPlayer(name, logic)); 
         }
         return playerList;
     }

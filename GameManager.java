@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameManager {
@@ -7,33 +7,33 @@ public class GameManager {
     private GameSetUp gameSetup;
     private GameLogic gameLogic;
     private GameResult gameResult;
-    private List<PlayerObject> players;
+    private ArrayList<PlayerObject> players;
 
-    public void start(){
-        Scanner scr = new Scanner(System.in);
-        gameSetup = new GameSetUp(scr);
-        players = gameSetup.buildPlayers();
+public void start(){
+    Scanner scr = new Scanner(System.in);
+    PlayerChoices choices = new PlayerChoices(); // we need PlayerCHoices to have 1 owner and not buidl it to everyone
+    
+    gameSetup = new GameSetUp(scr, choices);     // delegates to setup
+    players = gameSetup.buildPlayers();
+    
+    System.out.print("Enter number of rounds: ");
+    totalRounds = scr.nextInt();
+    scr.nextLine();
+    
+    gameLogic = new GameLogic(choices);          // delegates to logic
+    gameResult = new GameResult();
+    currentRounds = 0;
 
-        System.out.print("Enter number of rounds: ");
-        totalRounds = scr.nextInt();
-        scr.nextLine(); // clear buffer
-
-        gameLogic = new GameLogic();
-        gameResult = new GameResult();
-        currentRounds = 0;
-
-        while(!isMatchOver()){
-            playRound();
-            currentRounds++;
-        }
-
-        gameResult.displayWinner();
+    while(!isMatchOver()){
+        playRound();
+        currentRounds++;
     }
+    gameLogic.displayFinalResults();
+}
 
-    public void playRound(){
-        System.out.println("\n--- Round " + (currentRounds + 1) + " ---");
-        gameLogic.runGame(); // using your groupmate's implementation for now
-    }
+public void playRound(){
+    gameLogic.playRound(currentRounds + 1); 
+}
 
     public boolean isMatchOver(){
         return currentRounds >= totalRounds;

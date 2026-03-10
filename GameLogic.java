@@ -5,11 +5,11 @@ public class GameLogic {
     private PlayerChoices choices;
     private GameResult results;
 
-    public GameLogic(){
+    public GameLogic(PlayerChoices choices){
+        this.choices = choices;
         scnr = new Scanner(System.in);
-        choices = new PlayerChoices();
         computer = new ComputerLogic(choices.getChoices());
-        results = new GameResult(); 
+        results = new GameResult();
     }
 
     public void playRound(int roundNumber) {
