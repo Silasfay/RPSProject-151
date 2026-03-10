@@ -1,0 +1,24 @@
+# Java
+.mtj.tmp/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+# IntelliJ IDEA
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+# VS Code 
+.vscode/
+.code-workspace
+
+# Misc. 
+*.log
