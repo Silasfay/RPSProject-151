@@ -33,22 +33,14 @@ public class GameLogic {
 
             // get computer move
             String computerChoice = computer.getString();
-
+            
+            //current round choices
             System.out.println("Player chose: " + playerChoice);
             System.out.println("Computer chose: " + computerChoice);
-
-            if (playerChoice.equals(computerChoice)) {
-                System.out.println("Round Result: Tie!");
-            }
-            else if (choices.getBeats(playerChoice)[0].equals(computerChoice)) {
-                System.out.println("Round Result: You win!");
-            }
-            else {
-                System.out.println("Round Result: You lose!");
-            }
             
-            // Update overall score
-            results.updateScore(playerChoice, computerChoice, choices);
+            //Get round results
+            String roundResult = results.updateScore(playerChoice, computerChoice, choices);
+            System.out.println("Round Result: " + roundResult);
 
             // Display current score
             System.out.println("Current Score:");
@@ -56,6 +48,9 @@ public class GameLogic {
             System.out.println("Computer: " + results.getPlayer2Wins());
             count++;
         }
+        //final overall score
+        System.out.println("\nFinal Results After 20 Rounds:");
+        results.displayWinner();
 
     }
         
