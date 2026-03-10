@@ -26,10 +26,14 @@ public class GameResult {
     }
 
     public void updateScore(String player1Choice, String player2Choice, PlayerChoices playerChoices) {
+        if (player1Choice.equals(player2Choice)) {
+            return "Tie!";
+        }
         if (playerChoices.getBeats(player1Choice)[0].equals(player2Choice)) {
             player1Wins++;
-        } else if (playerChoices.getBeats(player2Choice)[0].equals(player1Choice)) {
-            player2Wins++;
+            return "You Win!";
         }
+        player2Wins++;
+        return "You Lose!";
     }
 }
