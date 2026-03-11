@@ -18,11 +18,21 @@ public class GameSetUp {
     }
 
     private PlayerLogic setPlayerType(String name){
-        System.out.print("Is " + name + " Human or Computer? (H/C): ");
-        String input = scr.nextLine().trim().toUpperCase();
-        // pass choices to HumanLogic so it can display the menu
-        if(input.equals("H")) return new HumanLogic(scr, choices);
-        return new ComputerLogic(choices.getChoices());
+        while(true){
+            System.out.print("Is " + name + " Human or Computer? (H/C): ");
+            String input = scr.nextLine().trim().toUpperCase();
+            
+            // pass choices to HumanLogic so it can display the menu
+            if{(input.equals("H"))
+                return new HumanLogic(scr, choices);
+              }
+            if{(input.equals("C"))
+                return new ComputerLogic(choices.getChoices());
+              }
+            //if not H or C entered
+            System.out.println("Invalid input. Please enter H for Human or C for Computer.");
+            
+        }
     }
 
     public ArrayList<PlayerObject> buildPlayers(){
