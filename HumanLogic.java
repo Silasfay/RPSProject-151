@@ -11,13 +11,16 @@ public class HumanLogic implements PlayerLogic {
 
     @Override
     public String getChoice(){
-        // display choices from PlayerChoices so menu updates automatically when choices change
-        choices.displayChoices();
-        int selection = scr.nextInt();
+        while(True){
+            // display choices from PlayerChoices so menu updates automatically when choices change
+            choices.displayChoices();
+            int selection = scr.nextInt();
         
-        if (selection == 1) return "rock";
-        if (selection == 2) return "paper";
-        if (selection == 3) return "scissors";
-        return "";
+            if (selection == 1) return "rock";
+            if (selection == 2) return "paper";
+            if (selection == 3) return "scissors";
+            
+            System.out.println("Invalid input. Please enter 1, 2, or 3.");
+        }
     }
 }
