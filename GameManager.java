@@ -9,31 +9,32 @@ public class GameManager {
     private GameResult gameResult;
     private ArrayList<PlayerObject> players;
 
-public void start(){
-    Scanner scr = new Scanner(System.in);
-    PlayerChoices choices = new PlayerChoices(); // we need PlayerCHoices to have 1 owner and not buidl it to everyone
-    
-    gameSetup = new GameSetUp(scr, choices);     // delegates to setup
-    players = gameSetup.buildPlayers();
-    
-    System.out.print("Enter number of rounds: ");
-    totalRounds = scr.nextInt();
-    scr.nextLine();
-    
-    gameLogic = new GameLogic(choices);          // delegates to logic
-    gameResult = new GameResult();
-    currentRounds = 0;
+    public void start(){
+        Scanner scr = new Scanner(System.in);
+        PlayerChoices choices = new PlayerChoices(); // we need PlayerChoices to have 1 owner and not build it to everyone
+        
+        gameSetup = new GameSetUp(scr, choices);     // delegates to setup
+        players = gameSetup.buildPlayers();
+        
+        System.out.print("Enter number of rounds: ");
+        totalRounds = scr.nextInt();
+        scr.nextLine();
+        
+        gameLogic = new GameLogic(choices);          // delegates to logic
+        gameResult = new GameResult();
+        currentRounds = 0;
 
-    while(!isMatchOver()){
-        playRound();
-        currentRounds++;
+        while(!isMatchOver()){
+            playRound();
+            currentRounds++;
+        }
+        gameLogic.displayFinalResults();
     }
-    gameLogic.displayFinalResults();
-}
 
-public void playRound(){
-    gameLogic.playRound(currentRounds + 1); 
-}
+    public void playRound(){
+        // passes both PlayerObjects to GameLogic
+        gameLogic.playRound(currentRounds + 1, players.get(0), players.get(1));
+    }
 
     public boolean isMatchOver(){
         return currentRounds >= totalRounds;

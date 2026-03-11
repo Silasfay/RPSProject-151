@@ -1,4 +1,4 @@
-import java.util.HashMap; 
+import java.util.HashMap;
 
 public class PlayerChoices {
     private HashMap<String, String[]> beats;
@@ -16,5 +16,17 @@ public class PlayerChoices {
 
     public String[] getBeats(String choice) {
         return beats.get(choice);
+    }
+
+    // displays choices dynamically from the HashMap so adding new choices updates menu automatically
+    public void displayChoices(){
+        System.out.println("Make your choice:");
+        System.out.println("_______________");
+        int i = 1;
+        for(String choice : beats.keySet()){
+            System.out.println(i + ") " + choice);
+            i++;
+        }
+        System.out.println("_______________");
     }
 }

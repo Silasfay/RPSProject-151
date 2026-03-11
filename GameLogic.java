@@ -1,49 +1,31 @@
-import java.util.Scanner;
 public class GameLogic {
-    private Scanner scnr;
-    private ComputerLogic computer;
     private PlayerChoices choices;
     private GameResult results;
 
     public GameLogic(PlayerChoices choices){
         this.choices = choices;
-        scnr = new Scanner(System.in);
-        computer = new ComputerLogic(choices.getChoices());
         results = new GameResult();
     }
 
-    public void playRound(int roundNumber) {
+    public void playRound(int roundNumber, PlayerObject player1, PlayerObject player2) {
         System.out.println("\nRound " + roundNumber);
-        System.out.println("Make your choice:");
-        System.out.println("_______________");
-        System.out.println("1) Rock");
-        System.out.println("2) Paper");
-        System.out.println("3) Scissors");
-        System.out.println("_______________");
 
-        int selection = scnr.nextInt();
-
-        String playerChoice = "";
-
-        if (selection == 1) playerChoice = "rock";
-        if (selection == 2) playerChoice = "paper";
-        if (selection == 3) playerChoice = "scissors";
-
-        // get computer move
-        String computerChoice = computer.getChoice();
+        // get moves from PlayerObject instead of directly from logic classes
+        String player1Choice = player1.makeSelection();
+        String player2Choice = player2.makeSelection();
         
         //current round choices
-        System.out.println("Player chose: " + playerChoice);
-        System.out.println("Computer chose: " + computerChoice);
+        System.out.println(player1.getName() + " chose: " + player1Choice);
+        System.out.println(player2.getName() + " chose: " + player2Choice);
         
         //Get round results
-        String roundResult = results.updateScore(playerChoice, computerChoice, choices);
+        String roundResult = results.updateScore(player1Choice, player2Choice, choices);
         System.out.println("Round Result: " + roundResult);
 
         // Display current score
         System.out.println("Current Score:");
-        System.out.println("Player: " + results.getPlayer1Wins());
-        System.out.println("Computer: " + results.getPlayer2Wins());
+        System.out.println(player1.getName() + ": " + results.getPlayer1Wins());
+        System.out.println(player2.getName() + ": " + results.getPlayer2Wins());
     }
 
     // Display final overall score

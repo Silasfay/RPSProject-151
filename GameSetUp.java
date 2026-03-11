@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class GameSetUp {
     private Scanner scr;
     private PlayerFactory factory;
-    private PlayerChoices choices;  
+    private PlayerChoices choices;
 
     public GameSetUp(Scanner scan, PlayerChoices choices){
         this.scr = scan;
@@ -20,16 +20,17 @@ public class GameSetUp {
     private PlayerLogic setPlayerType(String name){
         System.out.print("Is " + name + " Human or Computer? (H/C): ");
         String input = scr.nextLine().trim().toUpperCase();
-        if(input.equals("H")) return new HumanLogic(scr);
+        // pass choices to HumanLogic so it can display the menu
+        if(input.equals("H")) return new HumanLogic(scr, choices);
         return new ComputerLogic(choices.getChoices());
     }
 
-    public ArrayList<PlayerObject> buildPlayers(){ 
+    public ArrayList<PlayerObject> buildPlayers(){
         ArrayList<PlayerObject> playerList = new ArrayList<>();
         for(int i = 0; i < 2; i++){
             String name = setPlayerName();
-            PlayerLogic logic = setPlayerType(name); 
-            playerList.add(factory.createPlayer(name, logic)); 
+            PlayerLogic logic = setPlayerType(name);
+            playerList.add(factory.createPlayer(name, logic));
         }
         return playerList;
     }
