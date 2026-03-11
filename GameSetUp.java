@@ -23,10 +23,10 @@ public class GameSetUp {
             String input = scr.nextLine().trim().toUpperCase();
             
             // pass choices to HumanLogic so it can display the menu
-            if{(input.equals("H"))
+            if(input.equals("H")){
                 return new HumanLogic(scr, choices);
               }
-            if{(input.equals("C"))
+            if(input.equals("C")){
                 return new ComputerLogic(choices.getChoices());
               }
             //if not H or C entered
