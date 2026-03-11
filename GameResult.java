@@ -31,9 +31,9 @@ public class GameResult {
         }
         if (playerChoices.getBeats(player1Choice)[0].equals(player2Choice)) {
             player1Wins++;
-            return "You Win!";
+            return "Player 1 Wins!";
         }
         player2Wins++;
-        return "You Lose!";
+        return " Player 2 Wins!";
     }
 }
