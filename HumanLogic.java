@@ -11,7 +11,7 @@ public class HumanLogic implements PlayerLogic {
 
     @Override
     public String getChoice(){
-        while(True){
+        while(true){
             // display choices from PlayerChoices so menu updates automatically when choices change
             choices.displayChoices();
             int selection = scr.nextInt();
