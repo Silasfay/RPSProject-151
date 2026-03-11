@@ -6,7 +6,6 @@ public class GameManager {
     private int currentRounds;
     private GameSetUp gameSetup;
     private GameLogic gameLogic;
-    private GameResult gameResult;
     private ArrayList<PlayerObject> players;
 
     public void start(){
@@ -21,7 +20,6 @@ public class GameManager {
         scr.nextLine();
         
         gameLogic = new GameLogic(choices);          // delegates to logic
-        gameResult = new GameResult();
         currentRounds = 0;
 
         while(!isMatchOver()){
