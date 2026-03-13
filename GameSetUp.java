@@ -19,18 +19,21 @@ public class GameSetUp {
 
     private PlayerLogic setPlayerType(String name){
         while(true){
-            System.out.print("Is " + name + " Human or Computer? (H/C): ");
+            System.out.print("Is " + name + " Human, Random Computer, or Trained Computer? (H/RC/TC): ");
             String input = scr.nextLine().trim().toUpperCase();
             
             // pass choices to HumanLogic so it can display the menu
             if(input.equals("H")){
                 return new HumanLogic(scr, choices);
               }
-            if(input.equals("C")){
+            if(input.equals("RC")){
                 return new ComputerLogic(choices.getChoices());
               }
-            //if not H or C entered
-            System.out.println("Invalid input. Please enter H for Human or C for Computer.");
+            if(input.equals("TC")){
+                return new ComputerLogic(choices.getChoices());
+              }
+            //if not H or RC or TC entered
+            System.out.println("Invalid input. Please enter H for Human, RC for Random Computer, or TC for Trained Computer");
             
         }
     }
