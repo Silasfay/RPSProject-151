@@ -1,4 +1,4 @@
-public interface ChoiceAlgorithm{
+public interface ChoiceAlgorithm {
   String getChoice();
   void recordRound(String humanChoice, String computerChoice);
   void saveData();

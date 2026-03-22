@@ -29,4 +29,35 @@ public class PlayerChoices {
         }
         System.out.println("_______________");
     }
+
+    public String determineChoice(int selection) {
+        // Goes through available options to select the option matching the index of the HashMap
+        // If no choice match a selected number, return null and ask for correct selection
+        int i = 1;
+        for(String choice : beats.keySet()){
+            if(i == selection) {
+                return choice;
+            }
+            i++;
+        }
+
+        return null;
+    }
+
+    public boolean determineWhoBeatsWho(String choice, String opponent) {
+        // Check if choice is equal, skips for loop
+        if (choice.equals(opponent)) {
+            return false;
+        }
+
+        // Gets possible choices that current choice beats
+        // If opponent's choice match any choices that current choice beats, then the current perspective wins
+        String[] possibleWins = beats.get(choice);
+        for (String possibleWin : possibleWins) {
+            if (possibleWin.equals(opponent)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -11,6 +11,7 @@ public class ComputerLogic implements PlayerLogic {
         this.ran = new Random();
         this.choice = choices;
     }
+
     @Override
     public String getChoice(){
         List<String> keys = new ArrayList<>(choice.keySet());

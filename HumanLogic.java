@@ -15,12 +15,13 @@ public class HumanLogic implements PlayerLogic {
             // display choices from PlayerChoices so menu updates automatically when choices change
             choices.displayChoices();
             int selection = scr.nextInt();
-        
-            if (selection == 1) return "rock";
-            if (selection == 2) return "paper";
-            if (selection == 3) return "scissors";
-            
-            System.out.println("Invalid input. Please enter 1, 2, or 3.");
+
+            // Call the PlayerChoice method to get possible choices without hardcoding
+            String resultedChoice = choices.determineChoice(selection);
+            if(resultedChoice != null) {
+                return resultedChoice;
+            }
+            System.out.println("Invalid input. Please enter an appropriate option.");
         }
     }
 }
