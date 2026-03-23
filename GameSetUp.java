@@ -27,10 +27,10 @@ public class GameSetUp {
                 return new HumanLogic(scr, choices);
               }
             if(input.equals("RC")){
-                return new ComputerLogic(choices.getChoices());
+                return new ComputerLogic(choices.getChoices(), false);
               }
             if(input.equals("TC")){
-                return new ComputerLogic(choices.getChoices());
+                return new ComputerLogic(choices.getChoices(), true);
               }
             //if not H or RC or TC entered
             System.out.println("Invalid input. Please enter H for Human, RC for Random Computer, or TC for Trained Computer");
