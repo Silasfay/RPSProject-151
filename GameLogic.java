@@ -28,10 +28,10 @@ public class GameLogic {
         System.out.println(player2.getName() + ": " + results.getPlayer2Wins());
 
         // Train ML models
-        if (player1.getLogic() instanceof ComputerLogic) {
+        if (player1.getLogic()) {
             ((ComputerLogic) player1.getLogic()).recordRound(player2Choice);
         }
-        if (player2.getLogic() instanceof ComputerLogic) {
+        if (player2.getLogic()) {
             ((ComputerLogic) player2.getLogic()).recordRound(player1Choice);
         }
     }
