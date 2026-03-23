@@ -1,3 +1,4 @@
+import java.io.*;
 public class GameLogger implements Logger {
     private PrintWriter writer;
 
