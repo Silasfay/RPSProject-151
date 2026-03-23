@@ -5,10 +5,12 @@ public class GameSetUp {
     private Scanner scr;
     private PlayerFactory factory;
     private PlayerChoices choices;
+    private String computerMode;
 
     public GameSetUp(Scanner scan, PlayerChoices choices){
         this.scr = scan;
         this.choices = choices;
+        this.computerMode = computerMode;
         this.factory = new PlayerFactory(scr, choices);
     }
 
