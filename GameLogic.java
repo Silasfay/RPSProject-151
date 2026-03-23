@@ -26,6 +26,14 @@ public class GameLogic {
         System.out.println("Current Score:");
         System.out.println(player1.getName() + ": " + results.getPlayer1Wins());
         System.out.println(player2.getName() + ": " + results.getPlayer2Wins());
+
+        // Train ML models
+        if (player1.getLogic() instanceof ComputerLogic) {
+            ((ComputerLogic) player1.getLogic()).recordRound(player2Choice);
+        }
+        if (player2.getLogic() instanceof ComputerLogic) {
+            ((ComputerLogic) player2.getLogic()).recordRound(player1Choice);
+        }
     }
 
     // Display final overall score
