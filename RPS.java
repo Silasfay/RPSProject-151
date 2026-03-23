@@ -5,14 +5,14 @@ public class RPS {
         System.out.println("Welcome to blehhh Rock Paper Scisors Game!");
 
         //comand line prompts
-        String mode = "PROMPT"; //default bahavior
+        String computerMode = "PROMPT"; //default bahavior
 
         for(String arg : args){
             if(arg.equalsIgnoreCase("-r")){
                 mode = "RANDOM";
             }
             else if(arg.equalsIgnoreCase("-m")){
-                mode = "ML";
+                mode = "TC";
             }
         }
         
