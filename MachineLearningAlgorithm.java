@@ -20,7 +20,7 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
 
         if (history.size() < N - 1) return randomChoice();
 
-        String lastSeq = String.join("", history);
+        String lastSeq = String.join("", history.sublist(0, N - 1));
 
         int max = -1;
         String predicted = null;
@@ -30,6 +30,7 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
                 int freq = frequencies.get(seq);
                 if (freq > max) {
                     max = freq;
+                    //last move in sequence = opponent move
                     predicted = seq.substring(seq.length() - 1);
                 }
             }
@@ -51,7 +52,8 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
     }
 
     @Override
-    public void recordRound(String opponentChoice) {
+    public void recordRound(String myChoice, String opponentChoice) {
+        history.add(myChoice);
         history.add(opponentChoice);
 
         if (history.size() > N) {
