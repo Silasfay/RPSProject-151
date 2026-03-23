@@ -20,7 +20,7 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
 
         if (history.size() < N - 1) return randomChoice();
 
-        String lastSeq = String.join("", history.sublist(0, N - 1));
+        String lastSeq = String.join("", history.subList(0, N - 1));
 
         int max = -1;
         String predicted = null;

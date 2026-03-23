@@ -14,7 +14,7 @@ public class RandomAlgorithm implements ComputerAlgorithm {
     }
 
     @Override
-    public void recordRound(String opponentChoice) {
+    public void recordRound(String myChoice, String opponentChoice) {
         // do nothing
     }
 

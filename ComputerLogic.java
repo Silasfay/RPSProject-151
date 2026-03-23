@@ -10,8 +10,8 @@ public class ComputerLogic implements PlayerLogic {
         return algorithm.getChoice();
     }
 
-    public void recordRound(String opponentChoice) {
-        algorithm.recordRound(opponentChoice);
+    public void recordRound(String myChoice, String opponentChoice) {
+        algorithm.recordRound(myChoice, opponentChoice);
     }
 
     public void saveData() {
