@@ -1,10 +1,17 @@
 import java.util.*;
 
+// TODO: use enums in order to switch which ComputerAlgorithm to create for a player with ComputerLogic
+enum Algorithm {
+    RANDOM,
+    ML
+}
+
 public class ComputerLogic implements PlayerLogic {
     private Random ran;
     private HashMap<String, String[]> choice;
 
     protected ComputerAlgorithm computerAlgorithm;
+
 
     private boolean isTC;
     private HashMap<String, Integer> frequencies;
