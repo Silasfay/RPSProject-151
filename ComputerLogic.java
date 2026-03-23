@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class ComputerLogic implements PlayerLogic {
     private ComputerAlgorithm algorithm;
 
