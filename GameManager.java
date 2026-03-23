@@ -30,7 +30,7 @@ public class GameManager {
 
         //save TC data
         for(PlayerObject p : players){
-            if (p.getLogic() instanceOf ComputerLogic){
+            if (p.getLogic() instanceof ComputerLogic){
                 ((ComputerLogic) p.getLogic()).saveData();
             }
         }
