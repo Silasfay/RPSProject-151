@@ -17,11 +17,6 @@ public class ComputerLogic implements PlayerLogic {
         this(choices, false);
     }
 
-    // TODO: needs implementation in random and ML algorithm
-    public void performAlgorithm() {
-        computerAlgorithm.runAlgorithm();
-    }
-
     public ComputerLogic(HashMap<String, String[]> choices){
         this.ran = new Random();
         this.choice = choices;
@@ -32,6 +27,11 @@ public class ComputerLogic implements PlayerLogic {
             frequencies = dataStore.load(); //load saved data
             history = new LinkedList<>();
         }
+    }
+
+    // TODO: needs implementation in random and ML algorithm
+    public void performAlgorithm() {
+        computerAlgorithm.runAlgorithm();
     }
 
     @Override
