@@ -1,12 +1,10 @@
 public class GameLogic {
     private PlayerChoices choices;
     private GameResult results;
-    private Logger logger;
 
     public GameLogic(PlayerChoices choices){
         this.choices = choices;
         this.results = new GameResult();
-        this.logger = logger;
     }
 
     public void playRound(int roundNumber, PlayerObject player1, PlayerObject player2) {
