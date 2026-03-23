@@ -22,6 +22,4 @@ public class RandomAlgorithm implements ComputerAlgorithm {
     public void saveData() {
         // do nothing
     }
-
-    }
 }
