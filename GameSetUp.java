@@ -22,7 +22,12 @@ public class GameSetUp {
 // just asks, moved all logic to factory
 private String setPlayerType(String name){
     System.out.print("Is " + name + " Human, Random Computer, or Trained Computer? (H/RC/TC): ");
-    return scr.nextLine().trim().toUpperCase();
+    String input = scr.nextLine().trim().toUpperCase();
+    
+        if(input.equals("H") || input.equals("RC") || input.equals("TC")){
+            return input;
+        }
+        System.out.println("Invalid input. Please enter H, RC, or TC.");
 }
 
 //passes string to factory
