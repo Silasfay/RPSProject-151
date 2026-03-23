@@ -7,12 +7,17 @@ public class GameManager {
     private GameSetUp gameSetup;
     private GameLogic gameLogic;
     private ArrayList<PlayerObject> players;
+    private String computerMode;
+
+    public GameManager(String mode){
+    this.computerMode = mode; // can be null
+    }
 
     public void start(){
         Scanner scr = new Scanner(System.in);
         PlayerChoices choices = new PlayerChoices(); // we need PlayerChoices to have 1 owner and not build it to everyone
         
-        gameSetup = new GameSetUp(scr, choices);     // delegates to setup
+        gameSetup = new GameSetUp(scr, choices, computerMode);     // delegates to setup
         players = gameSetup.buildPlayers();
         
         System.out.print("Enter number of rounds: ");
