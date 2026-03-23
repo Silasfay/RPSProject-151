@@ -1,3 +1,5 @@
 public interface ComputerAlgorithm {
-    public void runAlgorithm();
+    String getChoice();
+    void recordRound(String opponentChoice);
+    void saveData();
 }
