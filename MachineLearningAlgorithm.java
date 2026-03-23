@@ -61,7 +61,7 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
             history.removeFirst();
         }
 
-        if (history.size() == N) {
+        while (history.size() == N) {
             String seq = String.join("", history);
             frequencies.put(seq, frequencies.getOrDefault(seq, 0) + 1);
         }
