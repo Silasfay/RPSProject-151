@@ -20,4 +20,8 @@ public class PlayerObject {
     public String getName(){
         return name;
     }
+
+    public PlayerLogic getLogic(){
+        return playerLogic;
+    }
 }
