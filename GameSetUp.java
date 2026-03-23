@@ -5,9 +5,9 @@ public class GameSetUp {
     private Scanner scr;
     private PlayerFactory factory;
     private PlayerChoices choices;
-    private String computerMode;
+    private String computerMode; //null if no override
 
-    public GameSetUp(Scanner scan, PlayerChoices choices){
+    public GameSetUp(Scanner scan, PlayerChoices choices, String computerMode){
         this.scr = scan;
         this.choices = choices;
         this.computerMode = computerMode;
