@@ -1,6 +1,7 @@
 public class GameLogic {
     private PlayerChoices choices;
     private GameResult results;
+    private Logger logger;
 
     public GameLogic(PlayerChoices choices){
         this.choices = choices;
