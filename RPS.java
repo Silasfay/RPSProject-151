@@ -12,7 +12,7 @@ public class RPS {
                 mode = "RANDOM";
             }
             else if(arg.equalsIgnoreCase("-m")){
-                mode = "TC";
+                mode = "ML";
             }
         }
         
