@@ -4,7 +4,7 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
     private HashMap<String, Integer> frequencies;
     private LinkedList<String> history;
     private HashMap<String, String[]> choices;
-    private int N = 6;
+    private int N = 5;
 
     private TCDataStore datastore;
 
@@ -53,8 +53,9 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
 
     @Override
     public void recordRound(String myChoice, String opponentChoice) {
-        history.add(myChoice);
+        //oppnent stores first
         history.add(opponentChoice);
+        history.add(myChoice);
 
         if (history.size() > N) {
             history.removeFirst();
