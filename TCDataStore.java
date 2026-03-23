@@ -14,7 +14,7 @@ public class TCDataStore{
         String[] parts = line.split(":");
         data.put(parts[0], Integer.parseInt(parts[1]));
       }
-    } catch (IOExceprion e){
+    } catch (IOException e){
       System.out.println("File Does Not Exist");
     }
     return data;
@@ -24,6 +24,7 @@ public class TCDataStore{
     try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME))){
       for(String key :  data.keySet()){
         writer.println(key + ":" + data.get(key));
+      }
     } catch (IOException e){
       System.out.println("Data Saving Error");
     }
