@@ -9,8 +9,8 @@ public class GameManager {
     private ArrayList<PlayerObject> players;
     private String computerMode;
 
-    public GameManager(String mode){
-    this.computerMode = mode; // can be null
+    public GameManager(String computerMode){
+    this.computerMode = computerMode; // can be null
     }
 
     public void start(){
