@@ -19,7 +19,19 @@ public class ComputerLogic implements PlayerLogic {
     private int N = 5;
 
     private TCDataStore datastore;
-    
+
+    // TODO: Implement this further to avoid needing to use checkers for whether the object is TC or not
+    public ComputerLogic() {
+        switch (algorithmType) {
+            case Algorithm.RANDOM:
+                computerAlgorithm = new RandomAlgorithm();
+                break;
+            case Algorithm.ML:
+                computerAlgorithm = new MachineLearningAlgorithm();
+                break;
+        }
+    }
+
     public ComputerLogic(HashMap<String, String[]> choices) {
         this(choices, false);
     }
