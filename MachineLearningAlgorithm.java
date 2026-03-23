@@ -1,8 +1,10 @@
+import java.util.*;
+
 public class MachineLearningAlgorithm implements ComputerAlgorithm {
     private HashMap<String, Integer> frequencies;
     private LinkedList<String> history;
     private HashMap<String, String[]> choices;
-    private int N = 5;}
+    private int N = 5;
 
     private TCDataStore datastore;
 
