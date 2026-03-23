@@ -30,7 +30,6 @@ public class GameLogic {
         // Train ML models
         player1.getLogic().recordRound(player2Choice);
         player2.getLogic().recordRound(player1Choice);
-        }
     }
 
     // Display final overall score
