@@ -31,9 +31,11 @@ public class GameSetUp {
             // if user chooses a computer, apply command-line mode if set
             if(input.equals("RC") || input.equals("TC")){
                 if(computerMode.equals("RANDOM")){
+                    System.out.println("Command-line override: " + name + " will use RANDOM algorithm");
                     return new ComputerLogic(new RandomAlgorithm(choices.getChoices()));
                 }
                 if(computerMode.equals("ML")){
+                    System.out.println("Command-line override: " + name + " will use MACHINE LEARNING algorithm");
                     return new ComputerLogic(new MachineLearningAlgorithm(choices.getChoices()));
                 }else {
                     // user selected type interactively
