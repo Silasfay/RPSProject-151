@@ -4,6 +4,8 @@ public class ComputerLogic implements PlayerLogic {
     private Random ran;
     private HashMap<String, String[]> choice;
 
+    protected ComputerAlgorithm computerAlgorithm;
+
     private boolean isTC;
     private HashMap<String, Integer> frequencies;
     private LinkedList<String> history;
@@ -13,6 +15,11 @@ public class ComputerLogic implements PlayerLogic {
     
     public ComputerLogic(HashMap<String, String[]> choices) {
         this(choices, false);
+    }
+
+    // TODO: needs implementation in random and ML algorithm
+    public void performAlgorithm() {
+        computerAlgorithm.runAlgorithm();
     }
 
     public ComputerLogic(HashMap<String, String[]> choices){
