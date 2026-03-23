@@ -28,12 +28,22 @@ public class GameSetUp {
             if(input.equals("H")){
                 return new HumanLogic(scr, choices);
               }
-            if(input.equals("RC")){
-                return new ComputerLogic(new RandomAlgorithm(choices.getChoices()));
-              }
-            if(input.equals("TC")){
-                return new ComputerLogic(new MachineLearningAlgorithm(choices.getChoices()));
-              }
+            // if user chooses a computer, apply command-line mode if set
+            if(input.equals("RC") || input.equals("TC")){
+                if(computerMode.equals("RANDOM")){
+                    return new ComputerLogic(new RandomAlgorithm(choices.getChoices()));
+                }
+                if(computerMode.equals("ML")){
+                    return new ComputerLogic(new MachineLearningAlgorithm(choices.getChoices()));
+                }else {
+                    // user selected type interactively
+                    if(input.equals("RC")){
+                        return new ComputerLogic(new RandomAlgorithm(choices.getChoices()));
+                    } else {
+                        return new ComputerLogic(new MachineLearningAlgorithm(choices.getChoices()));
+                    }
+                }
+            }
             //if not H or RC or TC entered
             System.out.println("Invalid input. Please enter H for Human, RC for Random Computer, or TC for Trained Computer");
             
