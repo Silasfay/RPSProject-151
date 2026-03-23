@@ -27,6 +27,13 @@ public class GameManager {
             currentRounds++;
         }
         gameLogic.displayFinalResults();
+
+        //save TC data
+        for(PlayerObject p : players){
+            if (p.getLogic() instanceOf ComputerLogic){
+                ((ComputerLogic) p.getLogic()).saveData();
+            }
+        }
     }
 
     public void playRound(){
