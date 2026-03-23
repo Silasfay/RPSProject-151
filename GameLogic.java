@@ -38,6 +38,15 @@ public class GameLogic {
 
     // Display final overall score
     public void displayFinalResults(){
-        results.displayWinner();
+        int resultingScore = results.calculateWinner();
+        if(resultingScore > 0) {
+            System.out.println("Player 1 won the game!");
+        }
+        else if(resultingScore < 0) {
+            System.out.println("Player 2 won the game!");
+        }
+        else {
+            System.out.println("Draw!");
+        }
     }
 }

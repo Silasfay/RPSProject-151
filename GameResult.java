@@ -14,14 +14,8 @@ public class GameResult {
         return player2Wins;
     }
     
-    public void displayWinner() {
-        if (player1Wins > player2Wins) {
-            System.out.println("Player 1 won the game!");
-        } else if (player2Wins > player1Wins) {
-            System.out.println("Player 2 won the game!");
-        } else {
-            System.out.println("Draw!");
-        }
+    public int calculateWinner() {
+        return player1Wins - player2Wins;
     }
 
     public String updateScore(String player1Choice, String player2Choice, PlayerChoices playerChoices) {
