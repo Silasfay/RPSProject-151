@@ -28,8 +28,8 @@ public class GameLogic {
         System.out.println(player2.getName() + ": " + results.getPlayer2Wins());
 
         // Train ML models
-        player1.getLogic().recordRound(player2Choice);
-        player2.getLogic().recordRound(player1Choice);
+        player1.getLogic().recordRound(player1Choice, player2Choice);
+        player2.getLogic().recordRound(player1Choice, player1Choice);
     }
 
     // Display final overall score
