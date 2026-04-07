@@ -4,7 +4,7 @@ public class GameLogic {
 
     public GameLogic(PlayerChoices choices){
         this.choices = choices;
-        results = new GameResult();
+        this.results = new GameResult();
     }
 
     public void playRound(int roundNumber, PlayerObject player1, PlayerObject player2) {

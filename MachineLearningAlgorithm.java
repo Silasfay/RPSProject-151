@@ -57,11 +57,11 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
         history.add(opponentChoice);
         history.add(myChoice);
 
-        if (history.size() > N) {
+        while(history.size() > N) {
             history.removeFirst();
         }
 
-        while (history.size() == N) {
+        if (history.size() == N) {
             String seq = String.join("", history);
             frequencies.put(seq, frequencies.getOrDefault(seq, 0) + 1);
         }
