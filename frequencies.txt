@@ -1,0 +1,5 @@
+scissorspaperscissorsrockpaper:1
+rockscissorsscissorspaperpaper:1
+paperrockscissorsrockrock:1
+scissorsrockpaperpaperrock:1
+rockrockscissorsrockrock:1
