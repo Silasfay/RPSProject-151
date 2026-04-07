@@ -68,6 +68,7 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
                 history.removeFirst();
             }
             history.add(myChoice);
+
         }
     }
 
