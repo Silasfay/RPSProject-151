@@ -5,6 +5,9 @@ public class ComputerLogic implements PlayerLogic {
         this.algorithm = algorithm;
     }
 
+    public ComputerAlgorithm getAlgorithm(){
+    return algorithm;
+}
     @Override
     public String getChoice() {
         return algorithm.getChoice();

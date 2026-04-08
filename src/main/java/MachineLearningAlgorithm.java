@@ -5,7 +5,7 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
     private LinkedList<String> history;
     private HashMap<String, String[]> choices;
     private int N = 5;
-
+    private String lastPrediction = null; // stores last prediction for display
     private TCDataStore datastore;
 
     public MachineLearningAlgorithm(HashMap<String, String[]> choices) {
@@ -17,8 +17,10 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
 
     @Override
     public String getChoice() {
-
-        if (history.size() < N - 1) return randomChoice();
+        if (history.size() < N - 1){
+            lastPrediction = null;
+            return randomChoice();
+        }
 
         String lastSeq = String.join("", history.subList(0, N - 1));
 
@@ -30,11 +32,15 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
                 int freq = frequencies.get(seq);
                 if (freq > max) {
                     max = freq;
-                    //last move in sequence = opponent move
+                    // last move in sequence = opponent move
                     predicted = seq.substring(seq.length() - 1);
                 }
             }
         }
+
+        // store prediction before returning counter move
+        lastPrediction = predicted;
+
         if (predicted == null) return randomChoice();
 
         for (String move : choices.keySet()) {
@@ -46,6 +52,11 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
         return randomChoice();
     }
 
+    // returns what ML predicted opponent would play
+    public String getLastPrediction(){
+        return lastPrediction != null ? lastPrediction : "Not enough data";
+    }
+
     private String randomChoice() {
         List<String> keys = new ArrayList<>(choices.keySet());
         return keys.get(new Random().nextInt(keys.size()));
@@ -53,7 +64,7 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
 
     @Override
     public void recordRound(String myChoice, String opponentChoice) {
-        //oppnent stores first
+        // opponent choice stored first
         history.add(opponentChoice);
         history.add(myChoice);
 
@@ -71,5 +82,4 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
     public void saveData() {
         datastore.save(frequencies);
     }
-
 }

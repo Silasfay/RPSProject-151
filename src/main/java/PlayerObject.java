@@ -13,6 +13,14 @@ public class PlayerObject {
         return currentChoice;
     }
 
+    // used by controller to push human choice in
+    public void setChoice(String choice){
+        if(playerLogic instanceof HumanLogic){
+            ((HumanLogic) playerLogic).setChoice(choice);
+        }
+        currentChoice = choice;
+    }
+
     public String getCurrentChoice(){
         return currentChoice;
     }
