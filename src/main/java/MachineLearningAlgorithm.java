@@ -5,7 +5,7 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
     private LinkedList<String> history;
     private HashMap<String, String[]> choices;
     private int N = 5;
-    private String lastPrediction = null; // stores last prediction for display
+    private String lastPrediction = null;
     private TCDataStore datastore;
 
     public MachineLearningAlgorithm(HashMap<String, String[]> choices) {
@@ -22,7 +22,8 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
             return randomChoice();
         }
 
-        String lastSeq = String.join("", history.subList(0, N - 1));
+        // take last N-1 entries to build lookup sequence
+        String lastSeq = String.join("", history.subList(history.size() - (N - 1), history.size()));
 
         int max = -1;
         String predicted = null;
@@ -32,62 +33,52 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
                 int freq = frequencies.get(seq);
                 if (freq > max) {
                     max = freq;
-                    // last move in sequence = opponent move
+                    // last character is the predicted human choice
                     predicted = seq.substring(seq.length() - 1);
                 }
             }
         }
 
-        // store prediction before returning counter move
+        // store prediction for display
         lastPrediction = predicted;
 
         if (predicted == null) return randomChoice();
 
+        // find move that beats predicted human choice
         for (String move : choices.keySet()) {
-            if (choices.get(move)[0].equals(predicted)) {
+            if (choices.get(move)[0].startsWith(predicted)) {
                 return move;
             }
         }
         return randomChoice();
     }
 
-    // returns what ML predicted opponent would play
-   public String getLastPrediction(){
-    if(lastPrediction == null) return "Not enough data";
-    
-    // lastPrediction is just the first letter, find full choice name
-    for(String choice : choices.keySet()){
-        if(choice.startsWith(lastPrediction)){
-            return choice;
+    public String getLastPrediction(){
+        if(lastPrediction == null) return "Not enough data";
+        switch(lastPrediction){
+            case "r": return "rock";
+            case "p": return "paper";
+            case "s": return "scissors";
+            default: return lastPrediction;
         }
     }
-    return lastPrediction;
-}
 
     private String randomChoice() {
         List<String> keys = new ArrayList<>(choices.keySet());
         return keys.get(new Random().nextInt(keys.size()));
     }
-
     @Override
     public void recordRound(String myChoice, String opponentChoice) {
-        // opponent choice stored first
-        history.add(opponentChoice);
-        history.add(myChoice);
+
+        history.add(String.valueOf(opponentChoice.charAt(0)));
 
         while(history.size() > N) {
-            history.removeLast();
+            history.removeFirst();
         }
 
         if (history.size() == N) {
             String seq = String.join("", history);
             frequencies.put(seq, frequencies.getOrDefault(seq, 0) + 1);
-
-            for(int i = 0; i < 2; i++) {
-                history.removeFirst();
-            }
-            history.add(myChoice);
-
         }
     }
 

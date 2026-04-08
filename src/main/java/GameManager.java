@@ -4,7 +4,7 @@ public class GameManager {
     private int totalRounds;
     private int currentRound;
     private GameLogic gameLogic;
-    private GameResult gameResult;
+    //private GameResult gameResult;
     private ArrayList<PlayerObject> players;
     private PlayerChoices choices;
 
@@ -24,7 +24,7 @@ public class GameManager {
         this.totalRounds = totalRounds;
         this.currentRound = 0;
         this.choices = new PlayerChoices();
-        this.gameResult = new GameResult();
+        //this.gameResult = new GameResult();
         this.gameLogic = new GameLogic(choices);
 
         // set up players — default human vs ML computer
@@ -33,39 +33,40 @@ public class GameManager {
     }
 
     public RoundResult playRound(String humanChoice){
-        currentRound++;
+    currentRound++;
 
-        // set human player choice
-        players.get(0).setChoice(humanChoice);
+    // set human player choice
+    players.get(0).setChoice(humanChoice);
 
-        // get computer choice
-        String computerChoice = players.get(1).makeSelection();
+    // get computer choice this also sets lastPrediction inside ML algorithm
+    String computerChoice = players.get(1).makeSelection();
 
-        // get ML prediction before computer plays
-        String predicted = gameLogic.getPrediction(players.get(1));
+    // get prediction that was set during makeSelection()
+    String predicted = gameLogic.getPrediction(players.get(1));
 
-        // evaluate round
-        String roundResult = gameResult.updateScore(humanChoice, computerChoice, choices);
+    // evaluate round through gameLogic single source of truth for scoring
+    String roundResult = gameLogic.evaluateRound(humanChoice, computerChoice);
 
-        // record round for ML
-        players.get(1).getLogic().recordRound(computerChoice, humanChoice);
+    // record round for ML computer choice first, human choice second
+    players.get(1).getLogic().recordRound(computerChoice, humanChoice);
 
-        // build result object
-        RoundResult result = new RoundResult();
-        result.humanChoice = humanChoice;
-        result.computerChoice = computerChoice;
-        result.predictedChoice = predicted != null ? predicted : "Unknown";
-        result.winner = roundResult;
-        result.humanWins = gameResult.getPlayer1Wins();
-        result.computerWins = gameResult.getPlayer2Wins();
-        result.ties = gameResult.getTies();
-        result.overallWinner = gameResult.calculateWinner() > 0 ? 
-            players.get(0).getName() : 
-            gameResult.calculateWinner() < 0 ? 
-            players.get(1).getName() : "Draw";
+    // build result object from gameLogic's results
+    GameResult gameResult = gameLogic.getResults();
+    RoundResult result = new RoundResult();
+    result.humanChoice = humanChoice;
+    result.computerChoice = computerChoice;
+    result.predictedChoice = predicted != null ? predicted : "Not enough data";
+    result.winner = roundResult;
+    result.humanWins = gameResult.getPlayer1Wins();
+    result.computerWins = gameResult.getPlayer2Wins();
+    result.ties = gameResult.getTies();
+    result.overallWinner = gameResult.calculateWinner() > 0 ?
+        players.get(0).getName() :
+        gameResult.calculateWinner() < 0 ?
+        players.get(1).getName() : "Draw";
 
-        return result;
-    }
+    return result;
+}
 
     public boolean isMatchOver(){
         return currentRound >= totalRounds;
