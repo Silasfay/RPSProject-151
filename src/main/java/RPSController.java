@@ -1,19 +1,20 @@
 import javafx.fxml.FXML;
-import javafx.scene.text.Text;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.text.Text;
 import java.util.Optional;
 
 public class RPSController {
 
-    @FXML private Text roundLabel;
-    @FXML private Text humanChoiceLabel;
-    @FXML private Text predictedLabel;
-    @FXML private Text computerChoiceLabel;
-    @FXML private Text winnerLabel;
-    @FXML private Text humanWinsLabel;
-    @FXML private Text computerWinsLabel;
-    @FXML private Text tiesLabel;
+    @FXML private Label roundLabel;
+    @FXML private Label humanChoiceLabel;
+    @FXML private Label predictedLabel;
+    @FXML private Label computerChoiceLabel;
+    @FXML private Label winnerLabel;
+    @FXML private Label humanWinsLabel;
+    @FXML private Label computerWinsLabel;
+    @FXML private Label tiesLabel;
 
     private GameManager gameManager;
     private int totalRounds = 20; // default
@@ -25,37 +26,35 @@ public class RPSController {
 
     private void startNewGame(){
         gameManager = new GameManager(totalRounds);
-        updateRoundLabel();
+        roundLabel.setText("Round: 0 / " + totalRounds);
+        humanChoiceLabel.setText("Human Chooses: ");
+        predictedLabel.setText("Predicted Human Choice: ");
+        computerChoiceLabel.setText("Computer Chooses: ");
+        winnerLabel.setText("Winner: ");
+        humanWinsLabel.setText("Human Wins: 0");
+        computerWinsLabel.setText("Computer Wins: 0");
+        tiesLabel.setText("Ties: 0");
     }
 
-    // called when Rock button clicked
     @FXML
-    public void onRock(){
-        playRound("rock");
-    }
+    public void onRock(){ playRound("rock"); }
 
-    // called when Paper button clicked
     @FXML
-    public void onPaper(){
-        playRound("paper");
-    }
+    public void onPaper(){ playRound("paper"); }
 
-    // called when Scissors button clicked
     @FXML
-    public void onScissors(){
-        playRound("scissors");
-    }
+    public void onScissors(){ playRound("scissors"); }
 
     private void playRound(String humanChoice){
         if(gameManager.isMatchOver()){
-            showAlert("Game Over", "Start a new game from the menu!");
+            showAlert("Game Over", "Start a new game from the Game menu!");
             return;
         }
 
         // play the round and get results back
         GameManager.RoundResult result = gameManager.playRound(humanChoice);
 
-        // update all labels
+        // update all labels with full text
         humanChoiceLabel.setText("Human Chooses: " + result.humanChoice);
         predictedLabel.setText("Predicted Human Choice: " + result.predictedChoice);
         computerChoiceLabel.setText("Computer Chooses: " + result.computerChoice);
@@ -63,22 +62,16 @@ public class RPSController {
         humanWinsLabel.setText("Human Wins: " + result.humanWins);
         computerWinsLabel.setText("Computer Wins: " + result.computerWins);
         tiesLabel.setText("Ties: " + result.ties);
-        updateRoundLabel();
+        roundLabel.setText("Round: " + gameManager.getCurrentRound() + " / " + totalRounds);
 
         if(gameManager.isMatchOver()){
-            showAlert("Game Over", "Final winner: " + result.overallWinner);
+            showAlert("Game Over!", "Final Result: " + result.overallWinner);
             gameManager.saveData();
         }
     }
 
-    private void updateRoundLabel(){
-        roundLabel.setText("Round: " + gameManager.getCurrentRound() + " / " + totalRounds);
-    }
-
-    // menu handlers
     @FXML
     public void onNewGame(){
-        // ask for number of rounds
         TextInputDialog dialog = new TextInputDialog("20");
         dialog.setTitle("New Game");
         dialog.setHeaderText("Start a new game");
@@ -102,7 +95,8 @@ public class RPSController {
 
     @FXML
     public void onAbout(){
-        showAlert("About", "Rock Paper Scissors\nCS 151 - Object Oriented Design\nSan Jose State University");
+        showAlert("About", 
+            "Rock Paper Scissors\nCS 151 - Object Oriented Design\nSan Jose State University");
     }
 
     private void showAlert(String title, String message){

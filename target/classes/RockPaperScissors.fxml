@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -36,13 +37,14 @@
       <children>
 
          <!-- Round display -->
-         <Text fx:id="roundLabel" layoutX="163.0" layoutY="56.0"
-               strokeType="OUTSIDE" strokeWidth="0.0" text="Round: 0">
+         <Label fx:id="roundLabel" layoutX="150.0" layoutY="30.0"
+                text="Round: 0 / 20">
             <font><Font size="30.0"/></font>
-         </Text>
+         </Label>
 
          <!-- Human section -->
-         <Text layoutX="193.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Human">
+         <Text layoutX="193.0" layoutY="100.0"
+               strokeType="OUTSIDE" strokeWidth="0.0" text="Human">
             <font><Font size="20.0"/></font>
          </Text>
 
@@ -58,38 +60,40 @@
          </ButtonBar>
 
          <!-- Human choice display -->
-         <Text fx:id="humanChoiceLabel" layoutX="119.0" layoutY="175.0"
-               strokeType="OUTSIDE" strokeWidth="0.0" text="Human Chooses: "/>
+         <Label fx:id="humanChoiceLabel" layoutX="100.0" layoutY="175.0"
+                text="Human Chooses: "/>
 
          <!-- Computer section -->
          <Pane layoutY="210.0" prefHeight="180.0" prefWidth="454.0">
             <children>
-               <Text layoutX="183.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Computer">
+               <Text layoutX="183.0" layoutY="22.0"
+                     strokeType="OUTSIDE" strokeWidth="0.0" text="Computer">
                   <font><Font size="20.0"/></font>
                </Text>
-               <Text fx:id="predictedLabel" layoutX="76.0" layoutY="60.0"
-                     strokeType="OUTSIDE" strokeWidth="0.0" text="Predicted Human Choice: "/>
-               <Text fx:id="computerChoiceLabel" layoutX="76.0" layoutY="85.0"
-                     strokeType="OUTSIDE" strokeWidth="0.0" text="Computer Chooses: "/>
-               <Text fx:id="winnerLabel" layoutX="139.0" layoutY="130.0"
-                     strokeType="OUTSIDE" strokeWidth="0.0" text="Winner: ">
+               <Label fx:id="predictedLabel" layoutX="76.0" layoutY="45.0"
+                      text="Predicted Human Choice: "/>
+               <Label fx:id="computerChoiceLabel" layoutX="76.0" layoutY="70.0"
+                      text="Computer Chooses: "/>
+               <Label fx:id="winnerLabel" layoutX="120.0" layoutY="110.0"
+                      text="Winner: ">
                   <font><Font size="24.0"/></font>
-               </Text>
+               </Label>
             </children>
          </Pane>
 
          <!-- Stats section -->
          <Pane layoutY="400.0" prefHeight="163.0" prefWidth="454.0">
             <children>
-               <Text layoutX="185.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics">
+               <Text layoutX="185.0" layoutY="30.0"
+                     strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics">
                   <font><Font size="18.0"/></font>
                </Text>
-               <Text fx:id="humanWinsLabel" layoutX="136.0" layoutY="60.0"
-                     strokeType="OUTSIDE" strokeWidth="0.0" text="Human Wins: 0"/>
-               <Text fx:id="computerWinsLabel" layoutX="121.0" layoutY="80.0"
-                     strokeType="OUTSIDE" strokeWidth="0.0" text="Computer Wins: 0"/>
-               <Text fx:id="tiesLabel" layoutX="187.0" layoutY="100.0"
-                     strokeType="OUTSIDE" strokeWidth="0.0" text="Ties: 0"/>
+               <Label fx:id="humanWinsLabel" layoutX="136.0" layoutY="45.0"
+                      text="Human Wins: 0"/>
+               <Label fx:id="computerWinsLabel" layoutX="121.0" layoutY="65.0"
+                      text="Computer Wins: 0"/>
+               <Label fx:id="tiesLabel" layoutX="170.0" layoutY="85.0"
+                      text="Ties: 0"/>
             </children>
          </Pane>
 

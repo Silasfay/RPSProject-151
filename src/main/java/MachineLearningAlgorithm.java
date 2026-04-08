@@ -53,9 +53,17 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
     }
 
     // returns what ML predicted opponent would play
-    public String getLastPrediction(){
-        return lastPrediction != null ? lastPrediction : "Not enough data";
+   public String getLastPrediction(){
+    if(lastPrediction == null) return "Not enough data";
+    
+    // lastPrediction is just the first letter, find full choice name
+    for(String choice : choices.keySet()){
+        if(choice.startsWith(lastPrediction)){
+            return choice;
+        }
     }
+    return lastPrediction;
+}
 
     private String randomChoice() {
         List<String> keys = new ArrayList<>(choices.keySet());
