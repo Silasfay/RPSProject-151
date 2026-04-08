@@ -48,7 +48,6 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
                 return move;
             }
         }
-
         return randomChoice();
     }
 
@@ -77,12 +76,18 @@ public class MachineLearningAlgorithm implements ComputerAlgorithm {
         history.add(myChoice);
 
         while(history.size() > N) {
-            history.removeFirst();
+            history.removeLast();
         }
 
         if (history.size() == N) {
             String seq = String.join("", history);
             frequencies.put(seq, frequencies.getOrDefault(seq, 0) + 1);
+
+            for(int i = 0; i < 2; i++) {
+                history.removeFirst();
+            }
+            history.add(myChoice);
+
         }
     }
 
